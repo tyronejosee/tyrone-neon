@@ -1,34 +1,383 @@
+/* Pallete */
+.theme-dark {
+	--color-bg: #000000;
+	--color-bg-alt: #000000;
+	--color-bg-code: #262626;
+	--color-text: #d4d4d4;
+	--color-muted: #737373;
+	--color-muted-graph: #262626;
+	--color-success: #34c759;
+	--color-danger: #ff3b30;
+
+	--color-1: #ff0051;
+	--color-2: #00e5ff;
+	--color-3: #ff0022;
+	--color-4: #00ff04;
+	--color-5: #daff01;
+	--color-6: #9d00ff;
+
+	--background-primary: var(--color-bg);
+	--background-primary-alt: var(--color-bg-alt);
+	--background-secondary: var(--color-bg);
+	--background-secondary-alt: var(--color-bg-alt);
+
+	--text-normal: var(--color-text);
+	--text-muted: var(--color-muted);
+	--text-accent: var(--color-accent);
+	--text-on-accent: #000;
+
+	--text-selection: rgba(0, 68, 255, 0.25);
+	--scrollbar-bg: rgba(255, 255, 255, 0.03);
+	--scrollbar-thumb-bg: rgba(255, 255, 255, 0.08);
+	--scrollbar-active-thumb-bg: var(--color-accent);
+}
+
+.theme-light {
+	--color-bg: #ffffff;
+	--color-bg-alt: #ffffff;
+	--color-bg-code: #e5e5e5;
+	--color-text: #404040;
+	--color-muted: #737373;
+	--color-muted-graph: #e5e5e5;
+	--color-success: #28cd41;
+	--color-danger: #ff3b30;
+
+	--color-1: #b30038;
+	--color-2: #0088a6;
+	--color-3: #cc001b;
+	--color-4: #008c0a;
+	--color-5: #889c00;
+	--color-6: #6b00b3;
+
+	--background-primary: var(--color-bg);
+	--background-primary-alt: var(--color-bg-alt);
+	--background-secondary: var(--color-bg);
+	--background-secondary-alt: var(--color-bg-alt);
+
+	--text-normal: var(--color-text);
+	--text-muted: var(--color-muted);
+	--text-accent: var(--color-accent);
+	--text-on-accent: #fff;
+
+	--text-selection: rgba(0, 68, 255, 0.25);
+	--scrollbar-bg: rgba(0, 0, 0, 0.03);
+	--scrollbar-thumb-bg: rgba(0, 0, 0, 0.08);
+	--scrollbar-active-thumb-bg: rgba(0, 0, 0, 0.15);
+}
+
 body {
-	--radius-s: 0px;
-	--radius-m: 0px;
-	--radius-l: 0px;
-	--input-radius: 0px;
-	--tab-radius-active: 0px;
-	--checkbox-radius: 0px;
-	--toggle-radius: 0px;
-	--toggle-thumb-radius: 0px;
-	--slider-thumb-radius: 0px;
+	--radius-s: 20px;
+	--radius-m: 20px;
+	--radius-l: 20px;
+	--input-radius: 20px;
+	--tab-radius-active: 8px;
+	--checkbox-radius: 20px;
+	--toggle-radius: 20px;
+	--toggle-thumb-radius: 20px;
+	--slider-thumb-radius: 20px;
 }
 
-.workspace-tab-header.is-active::before, .workspace-tab-header.is-active::after {
-	display: none;
+/* UI */
+.titlebar-inner {
+	color: var(--text-normal);
+	font-weight: 500;
 }
 
-svg * {
-	stroke-linecap: square;
-	stroke-linejoin: miter;
-	rx: 0;
-	ry: 0;
+.titlebar-button {
+	opacity: 0.7;
+	transition: opacity 0.2s;
+}
+.titlebar-button:hover {
+	opacity: 1;
 }
 
-.menu {
-	padding: var(--size-2-1);
-}
-
-.menu-item {
-	padding: var(--size-4-1) var(--size-4-2);
+body:not(.is-mobile)
+	.workspace-split.mod-left-split
+	.workspace-sidedock-vault-profile {
+	border-top: none;
 }
 
 .menu-separator {
 	margin: var(--size-2-1) calc(var(--size-2-1) * -1);
+}
+
+.suggestion-item.is-selected {
+	background-color: var(--text-selection);
+	border-radius: 8px;
+}
+
+.status-bar {
+	background-color: var(--color-bg);
+	border-radius: 8px 8px 0 0;
+	border: none;
+}
+
+.workspace-ribbon {
+	border: none;
+}
+
+.workspace-split.mod-vertical > * > .workspace-leaf-resize-handle,
+.workspace-split.mod-left-split > .workspace-leaf-resize-handle {
+	border: none;
+}
+
+.workspace-split.mod-right-split > .workspace-leaf-resize-handle {
+	border: none;
+}
+
+/* Editor & Preview */
+.cm-s-obsidian,
+.markdown-preview-view {
+	color: var(--text-normal);
+	font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+	font-size: 15px;
+	line-height: 1.6;
+}
+
+/* Headers */
+.cm-s-obsidian .cm-header,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 600;
+	color: var(--color-accent);
+	margin-top: 1.2em;
+	margin-bottom: 0.4em;
+}
+
+.markdown-preview-view h6 {
+	color: var(--color-3);
+}
+
+/* Texts */
+.cm-strong {
+	color: var(--color-5);
+}
+
+/* Tasks list */
+.cm-s-obsidian span.cm-formatting-task {
+	color: var(--color-4);
+}
+
+/* List */
+.cm-s-obsidian .cm-formatting-list {
+	color: var(--color-4);
+}
+
+/* Links */
+a,
+.cm-s-obsidian span.cm-link {
+	color: var(--text-accent);
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+/* Internal Links - Tags */
+a.internal-link,
+a.tag,
+.cm-s-obsidian span.cm-hmd-internal-link,
+.cm-s-obsidian span.cm-hashtag {
+	color: var(--color-accent-alt);
+	font-weight: 500;
+}
+
+/* Blockquotes */
+blockquote,
+.cm-s-obsidian span.cm-quote {
+	border-left: 3px solid var(--color-accent);
+	padding-left: 10px;
+	color: var(--text-muted);
+	font-style: italic;
+}
+
+/* Code */
+code,
+.cm-s-obsidian span.cm-inline-code {
+	background: var(--color-bg-code);
+	color: var(--color-accent-alt);
+	padding: 2px 4px;
+	border-radius: 4px;
+	font-size: 0.95em;
+}
+pre.HyperMD-codeblock,
+.markdown-preview-view pre code {
+	background: var(--color-bg-code);
+	color: var(--text-normal);
+	padding: 10px;
+	border-radius: 8px;
+	overflow-x: auto;
+}
+
+.markdown-rendered pre {
+	background-color: var(--color-bg-code);
+}
+
+.markdown-rendered code {
+	background-color: var(--color-bg-code);
+}
+
+.cm-s-obsidian div.HyperMD-codeblock-begin-bg,
+.cm-s-obsidian div.HyperMD-codeblock-end-bg {
+	background-color: var(--color-bg-code);
+}
+
+.cm-s-obsidian div.HyperMD-codeblock-bg {
+	background-color: var(--color-bg-code);
+}
+
+/* Graph view */
+.graph-view.color-fill {
+	color: var(--color-accent);
+}
+
+.graph-view.color-fill-unresolved {
+	color: var(--color-muted-graph);
+}
+
+.graph-view.color-line {
+	color: var(--color-muted-graph);
+}
+
+.graph-view.color-arrow {
+	color: var(--color-accent-alt);
+}
+
+.graph-view.color-text {
+	color: var(--text-normal);
+}
+
+.graph-view.color-fill-highlight {
+	color: var(--color-success);
+}
+
+.theme-dark .graph-view.color-fill-tag,
+.theme-light .graph-view.color-fill-tag {
+	color: var(--color-success);
+}
+
+/* Explorer - Additional hovers */
+.nav-file-title:hover {
+	color: var(--interactive-accent) !important;
+}
+
+.nav-folder-title:hover {
+	color: var(--interactive-accent) !important;
+}
+
+.nav-folder-collapse-indicator:hover {
+	color: var(--interactive-accent);
+}
+
+/* Sidebar and Ribbon hovers */
+.workspace-ribbon-collapse-btn:hover {
+	color: var(--interactive-accent);
+}
+
+.side-dock-ribbon-tab:hover {
+	color: var(--interactive-accent);
+}
+
+.side-dock-ribbon-action:hover {
+	color: var(--interactive-accent);
+}
+
+/* Tab hovers */
+.workspace-tab-header:hover {
+	color: var(--interactive-accent);
+}
+
+.workspace-tab-header-inner-title:hover {
+	color: var(--interactive-accent);
+}
+
+/* Menu and dropdown hovers */
+.menu-item:hover {
+	color: var(--interactive-accent) !important;
+}
+
+.dropdown-item:hover {
+	color: var(--interactive-accent);
+}
+
+/* Button hovers */
+.clickable-icon:hover {
+	color: var(--interactive-accent);
+}
+
+.mod-cta:hover {
+	background-color: var(--interactive-accent);
+	color: var(--text-on-accent);
+}
+
+/* Link hovers */
+a:hover,
+.internal-link:hover,
+.external-link:hover {
+	color: var(--interactive-accent);
+}
+
+/* Tag hovers */
+.tag:hover {
+	color: var(--interactive-accent);
+}
+
+/* Settings hovers */
+.setting-item-control:hover {
+	border-color: var(--interactive-accent);
+}
+
+/* Tree view and tabs hovers */
+body:not(.is-grabbing) .tree-item-self.is-active:hover,
+.tree-item-self.is-active {
+	color: var(--color-accent);
+}
+
+.outline .tree-item-self:hover {
+	color: var(--interactive-accent) !important;
+}
+
+.nav-folder .tree-item-self:hover,
+.nav-file .tree-item-self:hover {
+	color: var(--interactive-accent) !important;
+}
+
+body:not(.is-grabbing) .tree-item-self:not(.is-active):hover {
+	color: var(--interactive-accent) !important;
+}
+
+.tree-item-self:hover .tree-item-inner {
+	color: inherit;
+}
+
+.workspace-tab-header:hover .workspace-tab-header-inner-icon {
+	color: var(--interactive-accent);
+}
+
+.workspace-tab-header-inner-icon:hover {
+	color: var(--interactive-accent);
+}
+
+.workspace-tab-header:hover .workspace-tab-header-inner-close-button {
+	color: var(--interactive-accent);
+}
+
+.workspace-tab-header-inner-close-button:hover {
+	color: var(--interactive-accent);
+}
+
+/* User accent color */
+.cm-editor .HyperMD-codeblock {
+	background-color: hsla(
+		var(--accent-h),
+		var(--accent-s),
+		var(--accent-l),
+		0.1
+	) !important;
+	border-left: 2px solid
+		hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 }
