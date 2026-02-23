@@ -42,7 +42,8 @@
 	--text-on-accent: #000;
 
 	/* Effects */
-	--text-selection: rgba(0, 68, 255, 0.25);
+	--text-selection: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.25);
+	--text-highlight-bg: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.3);
 	--scrollbar-bg: rgba(255, 255, 255, 0.03);
 	--scrollbar-thumb-bg: rgba(255, 255, 255, 0.08);
 	--scrollbar-active-thumb-bg: var(--color-accent);
@@ -81,7 +82,8 @@
 	--text-on-accent: #fff;
 
 	/* Effects */
-	--text-selection: rgba(0, 68, 255, 0.25);
+	--text-selection: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.25);
+	--text-highlight-bg: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.25);
 	--scrollbar-bg: rgba(0, 0, 0, 0.03);
 	--scrollbar-thumb-bg: rgba(0, 0, 0, 0.08);
 	--scrollbar-active-thumb-bg: rgba(0, 0, 0, 0.15);
@@ -424,6 +426,22 @@ body:not(.is-grabbing) .tree-item-self:not(.is-active):hover {
 .search-input-container,
 .search-input-container input {
 	border: none !important;
+}
+
+/* Search match highlights in editor (Ctrl/Cmd+F) */
+.cm-editor .cm-searchMatch {
+	background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.3);
+	border-bottom: 2px solid hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+}
+
+.cm-editor .cm-searchMatch.cm-searchMatch-selected {
+	background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.5);
+}
+
+/* Global search result matched text */
+.search-result-file-matched-text {
+	background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.3);
+	color: var(--text-normal);
 }
 
 /* Viewport and views */
