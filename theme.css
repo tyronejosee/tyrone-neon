@@ -429,19 +429,25 @@ body:not(.is-grabbing) .tree-item-self:not(.is-active):hover {
 }
 
 /* Search match highlights in editor (Ctrl/Cmd+F) */
-.cm-editor .cm-searchMatch {
-	background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.3);
+.cm-editor .cm-searchMatch,
+.cm-s-obsidian span.obsidian-search-match-highlight {
+	background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.3) !important;
 	border-bottom: 2px solid hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 }
 
 .cm-editor .cm-searchMatch.cm-searchMatch-selected {
-	background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.5);
+	background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.5) !important;
 }
 
 /* Global search result matched text */
 .search-result-file-matched-text {
-	background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.3);
+	background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.3) !important;
 	color: var(--text-normal);
+}
+
+/* Search result highlights via Obsidian variable override */
+.search-result-container {
+	--text-highlight-bg: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.3);
 }
 
 /* Viewport and views */
